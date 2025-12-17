@@ -8,6 +8,7 @@ SafeClub is a decentralized application (dApp) that allows members of a club to 
 
 - **Smart Contract**: Solidity ^0.8.20, using OpenZeppelin contracts (Ownable, ReentrancyGuard)
 - **Development Framework**: Hardhat for testing and deployment
+- **IDE**: Remix IDE for contract development and deployment
 - **Frontend**: Next.js with React, TypeScript, Tailwind CSS for styling
 - **Blockchain Interaction**: Ethers.js
 - **UI Components**: Framer Motion, Lucide React
@@ -17,7 +18,8 @@ SafeClub is a decentralized application (dApp) that allows members of a club to 
 - Node.js (v16 or higher)
 - npm or yarn
 - MetaMask browser extension
-- Ganache (for local blockchain) or access to a testnet
+- Ganache (for local blockchain, default port 7545) or access to a testnet
+- Remix IDE (online at remix.ethereum.org)
 
 ## Installation and Setup
 
@@ -41,20 +43,28 @@ SafeClub is a decentralized application (dApp) that allows members of a club to 
    ```
 
 4. **Start local blockchain**:
-   - Install and start Ganache, or use Hardhat network.
+   - Install and start Ganache on port 7545, or use Hardhat network.
    - For Hardhat: in backend directory, run `npx hardhat node`
 
 5. **Deploy the contract**:
-   ```
-   cd backend
-   npx hardhat run scripts/deploy.js --network localhost
-   ```
-   This will update the contract address in `frontend/utils/contract-address.json`.
+   - Option 1: Using Hardhat
+     ```
+     cd backend
+     npx hardhat run scripts/deploy.js --network localhost
+     ```
+     This will update the contract address in `frontend/utils/contract-address.json`.
+   - Option 2: Using Remix IDE
+     - Open Remix IDE at https://remix.ethereum.org
+     - Create a new file and paste the SafeClub.sol code
+     - Compile the contract
+     - Connect to your local Ganache (Environment: Injected Provider - MetaMask or Web3 Provider)
+     - Deploy the contract
+     - Copy the deployed contract address and update `frontend/utils/contract-address.json`
 
 6. **Configure MetaMask**:
    - Open MetaMask and add a custom network.
-   - Network Name: Localhost 8545
-   - RPC URL: http://127.0.0.1:8545
+   - Network Name: Localhost 7545
+   - RPC URL: http://127.0.0.1:7545
    - Chain ID: 1337
    - Import accounts from Ganache.
 
